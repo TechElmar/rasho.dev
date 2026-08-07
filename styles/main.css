@@ -232,10 +232,18 @@ kbd {
   flex-direction: column;
 }
 
-.hud-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+/* The button group must never be clipped: it holds the only route to the
+   résumé. So the zone chip is the thing that gives way — it shrinks and
+   ellipses, while the buttons keep their full width. */
+.hud-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 0.5rem;
+}
 
 .hud-zone {
   display: flex; align-items: center; gap: 0.7rem;
+  flex: 0 1 auto;
+  min-width: 0;
   padding: 0.55rem 0.95rem 0.55rem 0.6rem;
   border-radius: 12px;
   background: var(--glass);
@@ -243,16 +251,29 @@ kbd {
   backdrop-filter: blur(16px);
   transition: border-color 0.4s;
 }
+.hud-zone > span:last-child { min-width: 0; }
 .hud-zone-icon {
+  flex: none;
   width: 30px; height: 30px; border-radius: 9px;
   display: grid; place-items: center;
   font-size: 0.95rem;
   background: var(--glass-hi);
 }
-.hud-zone-name { display: block; font-size: 0.9rem; font-weight: 500; line-height: 1.15; }
-.hud-zone-sub { display: block; font-size: 0.62rem; color: var(--ink-faint); letter-spacing: 0.12em; text-transform: uppercase; }
+.hud-zone-name {
+  display: block; font-size: 0.9rem; font-weight: 500; line-height: 1.15;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.hud-zone-sub {
+  display: block; font-size: 0.62rem; color: var(--ink-faint);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
-.hud-right { display: flex; gap: 0.5rem; align-items: center; pointer-events: auto; }
+.hud-right {
+  display: flex; gap: 0.5rem; align-items: center;
+  flex: 0 0 auto;
+  pointer-events: auto;
+}
 
 .hud-bits {
   display: flex; align-items: center; gap: 0.45rem;
@@ -767,6 +788,25 @@ kbd {
   .panel-body { padding: 1.1rem; }
   .hud-hint { display: none; }
   .title-actions { flex-direction: column; align-items: stretch; }
+}
+
+/* Phones: six controls plus the fragment counter have to fit across the top,
+   so tighten everything and let the zone chip give up most of its width. */
+@media (max-width: 560px) {
+  .hud-right { gap: 0.3rem; }
+  .icon-btn { width: 34px; height: 34px; font-size: 0.86rem; }
+  .hud-bits { height: 34px; padding: 0 0.5rem; font-size: 0.72rem; gap: 0.35rem; }
+  .hud-zone { padding: 0.4rem 0.6rem 0.4rem 0.4rem; gap: 0.45rem; max-width: 42%; }
+  .hud-zone-icon { width: 26px; height: 26px; font-size: 0.85rem; border-radius: 7px; }
+  .hud-zone-name { font-size: 0.8rem; }
+}
+
+@media (max-width: 400px) {
+  .icon-btn { width: 31px; height: 31px; font-size: 0.8rem; }
+  .hud-bits { height: 31px; padding: 0 0.4rem; font-size: 0.68rem; }
+  .bit-dot { width: 7px; height: 7px; }
+  .hud-zone { max-width: 34%; }
+  .hud-zone-icon { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
