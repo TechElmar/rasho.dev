@@ -40,11 +40,14 @@ window.CONTENT = (function () {
   const profile = {
     name: 'Elmar Rasho',
     short: 'Elmar',
-    role: 'Software Engineer',
+    // What you *are*, not what you're applying to be. The work in The Ledger
+    // and The Workshop makes the case on its own; claiming a title you have
+    // not held yet just gives an interviewer something to poke at.
+    role: 'Computer Science Graduate',
     tagline: 'I build things for people to use — then give them away.',
     location: 'Hamilton / Toronto, Ontario',
     email: 'rashoelmar@gmail.com',
-    availability: 'CS grad 2026 — open to software engineering roles',
+    availability: 'Western CS &rsquo;26 — looking for my first software role',
 
     intro: [
       'Hi &mdash; I&rsquo;m Elmar. Assyrian, born and raised in Hamilton, Ontario, and hooked on computers from the moment I got my hands on one.',

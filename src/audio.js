@@ -36,8 +36,65 @@ window.SFX = (function () {
     osc.stop(c.currentTime + dur + 0.02);
   }
 
+  /* ---- sustained snow-under-the-board -------------------------------------
+     Riding on snow is broadband noise shaped by how fast you're going, so it
+     synthesises cleanly: one looping noise buffer through a bandpass (the
+     hiss) and a lowpass (the body). Speed opens both filters and lifts the
+     gain, so it rises as you accelerate and settles as you coast. No audio
+     file involved. */
+  let rideNodes = null;
+
+  function noiseBuffer(c) {
+    const len = Math.floor(c.sampleRate * 2);
+    const buf = c.createBuffer(1, len, c.sampleRate);
+    const data = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) data[i] = Math.random() * 2 - 1;
+    return buf;
+  }
+
+  function ensureRide() {
+    const c = ensure();
+    if (!c) return null;
+    if (rideNodes) return rideNodes;
+
+    const src = c.createBufferSource();
+    src.buffer = noiseBuffer(c);
+    src.loop = true;
+
+    const bp = c.createBiquadFilter();
+    bp.type = 'bandpass'; bp.frequency.value = 900; bp.Q.value = 0.55;
+
+    const lp = c.createBiquadFilter();
+    lp.type = 'lowpass'; lp.frequency.value = 2600;
+
+    const gain = c.createGain();
+    gain.gain.value = 0;
+
+    src.connect(bp); bp.connect(lp); lp.connect(gain); gain.connect(c.destination);
+    src.start();
+
+    rideNodes = { src: src, bp: bp, lp: lp, gain: gain };
+    return rideNodes;
+  }
+
   return {
     isOn: function () { return on; },
+
+    /* Called every frame while the board is out. `speed` is 0..1. */
+    ride: function (active, speed) {
+      if (!on) {
+        if (rideNodes) { try { rideNodes.gain.gain.value = 0; } catch (e) { /* gone */ } }
+        return;
+      }
+      const n = ensureRide();
+      if (!n || !ctx) return;
+      const now = ctx.currentTime;
+      const s = Math.max(0, Math.min(1, speed || 0));
+      // quick to swell, slower to die away — like the board settling
+      n.gain.gain.setTargetAtTime(active ? 0.015 + s * 0.055 : 0, now, active ? 0.07 : 0.2);
+      n.bp.frequency.setTargetAtTime(700 + s * 1600, now, 0.12);
+      n.lp.frequency.setTargetAtTime(2200 + s * 3000, now, 0.12);
+    },
     toggle: function () {
       on = !on;
       try { localStorage.setItem('sound', on ? '1' : '0'); } catch (e) { /* ignore */ }

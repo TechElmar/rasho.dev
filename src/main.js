@@ -269,6 +269,12 @@
       }
 
       window.PLAYER.updateParticles(particles, dt);
+
+      // snow under the board, scaled by how fast you're actually going
+      if (W.state.hasBoard) {
+        SFX.ride(player.riding && player.speed > 40, player.speed / 620);
+      }
+
       checkBits();
       checkZone();
       activeProp = blocked ? null : findActive();
