@@ -8,18 +8,18 @@
 <meta name="theme-color" content="#070a18" />
 <meta name="author" content="Elmar Rasho" />
 
-<!-- Canonical is www because that is where Vercel actually serves production;
-     the apex 308s here. If you ever flip that in Vercel's Domains settings,
-     change these five URLs (canonical, og:url, og:image, twitter:image and
-     the JSON-LD url) plus sitemap.xml back to the bare apex. -->
-<link rel="canonical" href="https://www.rasho.dev/" />
+<!-- Vercel serves the bare apex as production and 308s www to it, so every
+     machine-readable URL below names the apex. If that ever flips, these five
+     (canonical, og:url, og:image, twitter:image, JSON-LD url) plus
+     sitemap.xml and robots.txt have to move together. -->
+<link rel="canonical" href="https://rasho.dev/" />
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.rasho.dev/" />
+<meta property="og:url" content="https://rasho.dev/" />
 <meta property="og:site_name" content="rasho.dev" />
 <meta property="og:title" content="Elmar Rasho — a portfolio you walk around in" />
 <meta property="og:description" content="Not a scroll. A world. Western CS '26, looking for my first software role. Use WASD." />
-<meta property="og:image" content="https://www.rasho.dev/assets/social-card.jpg" />
+<meta property="og:image" content="https://rasho.dev/assets/social-card.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="A world of floating islands, each one a section of a CV." />
@@ -27,7 +27,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Elmar Rasho — a portfolio you walk around in" />
 <meta name="twitter:description" content="Not a scroll. A world. Western CS '26, looking for my first software role. Use WASD." />
-<meta name="twitter:image" content="https://www.rasho.dev/assets/social-card.jpg" />
+<meta name="twitter:image" content="https://rasho.dev/assets/social-card.jpg" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23070a18'/%3E%3Ccircle cx='16' cy='13' r='5' fill='%237dd3fc'/%3E%3Crect x='11' y='19' width='10' height='8' rx='3' fill='%237dd3fc'/%3E%3C/svg%3E" />
 
@@ -42,7 +42,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Elmar Rasho",
-  "url": "https://www.rasho.dev/",
+  "url": "https://rasho.dev/",
   "email": "mailto:rashoelmar@gmail.com",
   "jobTitle": "Computer Science Graduate",
   "address": { "@type": "PostalAddress", "addressRegion": "Ontario", "addressCountry": "CA" },
