@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>Elmar Rasho — Software Engineer</title>
+<meta name="description" content="Elmar Rasho — software engineer in Hamilton/Toronto. Built PokeDropz, a monitoring platform serving 7,000+ users in production for over a year. A portfolio you walk around in." />
+<meta name="theme-color" content="#070a18" />
+<meta name="author" content="Elmar Rasho" />
+
+<link rel="canonical" href="https://rasho.dev/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://rasho.dev/" />
+<meta property="og:site_name" content="rasho.dev" />
+<meta property="og:title" content="Elmar Rasho — a portfolio you walk around in" />
+<meta property="og:description" content="Not a scroll. A world. Software engineer, CS grad 2026. Use WASD." />
+<meta property="og:image" content="https://rasho.dev/assets/social-card.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="A world of floating islands, each one a section of a CV." />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Elmar Rasho — a portfolio you walk around in" />
+<meta name="twitter:description" content="Not a scroll. A world. Software engineer, CS grad 2026. Use WASD." />
+<meta name="twitter:image" content="https://rasho.dev/assets/social-card.jpg" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23070a18'/%3E%3Ccircle cx='16' cy='13' r='5' fill='%237dd3fc'/%3E%3Crect x='11' y='19' width='10' height='8' rx='3' fill='%237dd3fc'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles/main.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Elmar Rasho",
+  "url": "https://rasho.dev/",
+  "email": "mailto:rashoelmar@gmail.com",
+  "jobTitle": "Software Engineer",
+  "address": { "@type": "PostalAddress", "addressRegion": "Ontario", "addressCountry": "CA" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Western University" },
+  "sameAs": [
+    "https://github.com/TechElmar",
+    "https://www.linkedin.com/in/elmarrasho/",
+    "https://soundcloud.com/chestpump"
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ===================== GAME CANVAS ===================== -->
+<canvas id="game" aria-hidden="true"></canvas>
+
+<!-- ===================== TITLE SCREEN ===================== -->
+<section id="title" class="screen">
+  <div class="title-inner">
+    <p class="kicker" data-mono>portfolio &middot; v1</p>
+    <h1 class="title-name" id="title-name">Elmar Rasho</h1>
+    <p class="title-role" id="title-role">Software Engineer</p>
+    <p class="title-blurb">
+      This isn&rsquo;t a page you scroll.<br />
+      It&rsquo;s a place you walk around.
+    </p>
+
+    <div class="title-actions">
+      <button class="btn btn-primary" id="btn-start">
+        <span class="btn-label">Enter the world</span>
+        <span class="btn-sub" data-mono>WASD / arrows &middot; touch</span>
+      </button>
+      <button class="btn btn-ghost" id="btn-resume-fast">
+        <span class="btn-label">Just show me the résumé</span>
+        <span class="btn-sub" data-mono>for people in a hurry</span>
+      </button>
+    </div>
+
+    <p class="title-foot" data-mono id="title-foot"></p>
+
+    <noscript>
+      <p class="title-blurb" style="opacity:1;animation:none;color:#fca5a5">
+        This site is an interactive world and needs JavaScript.
+        For the plain text version, email
+        <a href="mailto:rashoelmar@gmail.com" style="color:#7dd3fc">rashoelmar@gmail.com</a>.
+      </p>
+    </noscript>
+  </div>
+  <div class="title-scan" aria-hidden="true"></div>
+</section>
+
+<!-- ===================== HUD ===================== -->
+<div id="hud" class="hud" hidden>
+  <div class="hud-top">
+    <div class="hud-zone">
+      <span class="hud-zone-icon" id="hud-icon"></span>
+      <span>
+        <span class="hud-zone-name" id="hud-zone">The Crossroads</span>
+        <span class="hud-zone-sub" data-mono id="hud-sub">start here</span>
+      </span>
+    </div>
+
+    <div class="hud-right">
+      <div class="hud-bits" title="Fragments found">
+        <span class="bit-dot" aria-hidden="true"></span>
+        <span data-mono><b id="bit-count">0</b>/<span id="bit-total">10</span></span>
+      </div>
+      <button class="icon-btn" id="btn-ride" title="Ride the board (hold Shift)" aria-label="Toggle riding" hidden>🏂</button>
+      <button class="icon-btn" id="btn-map" title="Map & fast travel (M)" aria-label="Map">▣</button>
+      <button class="icon-btn" id="btn-music" title="Background music (B)" aria-label="Toggle background music">♫</button>
+      <button class="icon-btn" id="btn-sound" title="Sound effects (T)" aria-label="Toggle sound effects">♪</button>
+      <button class="icon-btn" id="btn-resume" title="Résumé view (R)" aria-label="Résumé">☰</button>
+    </div>
+  </div>
+
+  <div class="hud-hint" id="hud-hint" data-mono></div>
+
+  <!-- touch controls -->
+  <div class="touch" id="touch" hidden>
+    <div class="stick" id="stick"><div class="stick-nub" id="stick-nub"></div></div>
+    <button class="touch-action" id="touch-action" aria-label="Interact">E</button>
+  </div>
+</div>
+
+<!-- ===================== INTERACT PROMPT ===================== -->
+<div id="prompt" class="prompt" hidden>
+  <kbd>E</kbd><span id="prompt-text">Examine</span>
+</div>
+
+<!-- ===================== PANEL (content windows) ===================== -->
+<div id="panel-wrap" class="panel-wrap" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="panel-title">
+    <header class="panel-head">
+      <div>
+        <p class="panel-eyebrow" data-mono id="panel-eyebrow"></p>
+        <h2 id="panel-title"></h2>
+      </div>
+      <button class="icon-btn" id="panel-close" aria-label="Close">✕</button>
+    </header>
+    <div class="panel-body" id="panel-body" tabindex="0"></div>
+    <footer class="panel-foot" data-mono>
+      <span><kbd>Esc</kbd> close</span>
+      <span id="panel-nav"></span>
+    </footer>
+  </div>
+</div>
+
+<!-- ===================== MAP OVERLAY ===================== -->
+<div id="map-wrap" class="panel-wrap" hidden>
+  <div class="panel panel-map" role="dialog" aria-modal="true" aria-label="World map">
+    <header class="panel-head">
+      <div>
+        <p class="panel-eyebrow" data-mono>world map</p>
+        <h2>Fast travel</h2>
+      </div>
+      <button class="icon-btn" id="map-close" aria-label="Close">✕</button>
+    </header>
+    <div class="panel-body">
+      <canvas id="minimap" width="640" height="440"></canvas>
+      <div class="map-list" id="map-list"></div>
+    </div>
+    <footer class="panel-foot" data-mono>
+      <span><kbd>M</kbd> close</span><span>click a district to warp</span>
+    </footer>
+  </div>
+</div>
+
+<!-- ===================== RÉSUMÉ / ACCESSIBLE VIEW ===================== -->
+<div id="resume" class="resume" hidden>
+  <div class="resume-bar">
+    <button class="btn btn-ghost btn-sm" id="resume-back">← Back to the world</button>
+    <a class="btn btn-primary btn-sm" id="resume-download" href="#" download>
+      <span class="btn-label">Download résumé ↓</span>
+      <span class="btn-sub" data-mono>pdf</span>
+    </a>
+  </div>
+  <main class="resume-doc" id="resume-doc"></main>
+</div>
+
+<!-- ===================== TOASTS ===================== -->
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<!-- sample-content badge -->
+<div id="sample-badge" class="sample-badge" data-mono hidden>sample content — edit <b>src/content.js</b></div>
+
+<script src="src/content.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/music.js"></script>
+<script src="src/input.js"></script>
+<script src="src/world.js"></script>
+<script src="src/draw.js"></script>
+<script src="src/player.js"></script>
+<script src="src/ui.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
