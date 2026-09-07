@@ -1,5 +1,5 @@
 /* ==========================================================================
-   music.js — looping background music with a crossfaded loop point.
+   music.js: looping background music with a crossfaded loop point.
 
    Rules this follows, deliberately:
    - Nothing ever autoplays. Browsers block it anyway, and a portfolio that
@@ -10,7 +10,7 @@
    Why two <audio> elements instead of one with loop=true:
    `loop` splices the end straight onto the start, so any mismatch at the
    seam is audible as a click or a jump every pass. Instead two elements
-   ping-pong — as one nears its end the other starts from zero and they
+   ping-pong. As one nears its end the other starts from zero and they
    crossfade over ~2s, which hides an imperfect loop point entirely.
 
    The crossfade is equal-power (sine-shaped), not linear. The two sides of
@@ -24,7 +24,7 @@ window.MUSIC = (function () {
   const cfg = (window.CONTENT.meta && window.CONTENT.meta.music) || null;
 
   const TICK = 40;          // ms between volume updates
-  const MASTER_EASE = 0.10; // per tick — master fade in/out over roughly 0.8s
+  const MASTER_EASE = 0.10; // per tick, master fade in/out over roughly 0.8s
 
   let a = null, b = null;   // the two ping-ponging elements
   let active = null;        // the one currently heading toward its loop point
@@ -126,7 +126,7 @@ window.MUSIC = (function () {
       try { el.volume = Math.max(0, Math.min(1, v)); } catch (e) { /* detached */ }
     });
 
-    // Fully faded out — stop burning cycles and release playback.
+    // Fully faded out, so stop burning cycles and release playback.
     if (masterTarget === 0 && masterVol < 0.004) {
       [a, b].forEach(function (el) { if (el) { try { el.pause(); } catch (e) { /* gone */ } } });
       clearInterval(timer); timer = null;
@@ -171,7 +171,7 @@ window.MUSIC = (function () {
       apply();
     },
 
-    /* Panel media takes priority — drop to a background murmur, don't stop. */
+    /* Panel media takes priority: drop to a background murmur, don't stop. */
     duck: function (state) {
       ducked = !!state;
       if (!on || !inWorld) return;

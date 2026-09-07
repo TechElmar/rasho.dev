@@ -1,5 +1,5 @@
 /* ==========================================================================
-   player.js — movement, collision resolution, footstep dust.
+   player.js: movement, collision resolution, footstep dust.
    ========================================================================== */
 
 window.PLAYER = (function () {
@@ -88,7 +88,7 @@ window.PLAYER = (function () {
       p.vx = p.vy = 0;
     }
 
-    // footstep dust — or a spray of snow off the edge of the board
+    // footstep dust, or a spray of snow off the edge of the board
     p.stepTimer -= dt;
     if (sp > 120 && p.stepTimer <= 0 && !window.REDUCED_MOTION) {
       p.stepTimer = riding ? 0.035 : 0.16;

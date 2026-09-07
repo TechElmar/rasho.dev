@@ -1,5 +1,5 @@
 /* ==========================================================================
-   main.js — boot, camera, game loop, interaction, progress.
+   main.js: boot, camera, game loop, interaction, progress.
    ========================================================================== */
 
 (function () {
@@ -51,7 +51,7 @@
         visited: W.state.visited,
         board: W.state.hasBoard,
       }));
-    } catch (e) { /* private mode — progress just won't persist */ }
+    } catch (e) { /* private mode, progress just won't persist */ }
   }
 
   function load() {
@@ -169,7 +169,7 @@
         if (W.state.bitsFound >= W.BIT_TOTAL) {
           W.state.vaultOpen = true;
           SFX.fanfare();
-          UI.toast('All fragments found — a bridge appeared north-east of The Workshop', '✧');
+          UI.toast('All fragments found. A bridge appeared north-east of The Workshop', '✧');
           save();
         } else {
           UI.toast('Fragment ' + W.state.bitsFound + ' of ' + W.BIT_TOTAL, '✦');
@@ -357,7 +357,7 @@
   $('btn-ride').onclick = function () {
     rideToggle = !rideToggle;
     updateRideUI();
-    UI.toast(rideToggle ? 'Riding — the board is out' : 'Back on foot', '🏂');
+    UI.toast(rideToggle ? 'Riding: the board is out' : 'Back on foot', '🏂');
   };
 
   // Keep HUD buttons from swallowing the next keypress: a focused button
@@ -366,7 +366,7 @@
     $(id).addEventListener('click', function () { this.blur(); });
   });
 
-  /* Music belongs to the world only — never over the title or the résumé. */
+  /* Music belongs to the world only, never over the title or the résumé. */
   function openResume() {
     window.MUSIC.setWorld(false);
     UI.openResume();
@@ -415,7 +415,7 @@
     updateRideUI();
     checkZone();
     SFX.enter();
-    // This runs off the Enter button / Enter key — a real user gesture, which
+    // This runs off the Enter button / Enter key, a real user gesture, which
     // is what lets a remembered "music on" actually start playing.
     window.MUSIC.setWorld(true);
     setTimeout(function () {
@@ -444,7 +444,7 @@
     $('title-name').textContent = C.profile.name;
     $('title-role').textContent = C.profile.role;
     $('title-foot').textContent = C.profile.location + '  ·  ' + (C.meta.domain || '');
-    document.title = C.profile.name + ' — ' + C.profile.role;
+    document.title = C.profile.name + ' | ' + C.profile.role;
 
     if (!C.meta.contentReady) $('sample-badge').hidden = false;
     if (!SFX.isOn()) $('btn-sound').classList.add('off');

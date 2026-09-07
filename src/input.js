@@ -1,5 +1,5 @@
 /* ==========================================================================
-   input.js — keyboard, virtual stick and click-to-move, normalised into
+   input.js: keyboard, virtual stick and click-to-move, normalised into
    one { dir, action } shape the game loop reads each frame.
    ========================================================================== */
 
@@ -23,7 +23,7 @@ window.INPUT = (function () {
 
   /* Controls that need the keyboard for themselves: a focused button must
      still get Space, and a focused <video> must still get arrow keys. The
-     game gives up movement/action keys while one of these has focus — but
+     game gives up movement/action keys while one of these has focus, but
      Esc and the overlay shortcuts must keep working, so the key handlers
      below still run either way. */
   function ownsKeys(el) {

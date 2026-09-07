@@ -1,5 +1,5 @@
 /* ==========================================================================
-   audio.js — tiny Web Audio blips. No files, no autoplay, off by default.
+   audio.js: tiny Web Audio blips. No files, no autoplay, off by default.
    ========================================================================== */
 
 window.SFX = (function () {
@@ -90,7 +90,7 @@ window.SFX = (function () {
       if (!n || !ctx) return;
       const now = ctx.currentTime;
       const s = Math.max(0, Math.min(1, speed || 0));
-      // quick to swell, slower to die away — like the board settling
+      // quick to swell, slower to die away, like the board settling
       n.gain.gain.setTargetAtTime(active ? 0.015 + s * 0.055 : 0, now, active ? 0.07 : 0.2);
       n.bp.frequency.setTargetAtTime(700 + s * 1600, now, 0.12);
       n.lp.frequency.setTargetAtTime(2200 + s * 3000, now, 0.12);
@@ -101,7 +101,7 @@ window.SFX = (function () {
       if (on) tone(660, 0.09, 'triangle', 0.07);
       return on;
     },
-    // Footsteps sit under everything else, but not by much — at 0.018 they
+    // Footsteps sit under everything else, but not by much. At 0.018 they
     // disappeared entirely once background music was playing.
     step:   function () { tone(180 + Math.random() * 40, 0.07, 'triangle', 0.05); },
     open:   function () { tone(420, 0.13, 'triangle', 0.07, 720); },

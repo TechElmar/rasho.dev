@@ -1,5 +1,5 @@
 /* ==========================================================================
-   draw.js — every pixel in this world is drawn with canvas primitives.
+   draw.js: every pixel in this world is drawn with canvas primitives.
    There are no image assets: sprites are functions, not files.
    ========================================================================== */
 
@@ -170,7 +170,7 @@ window.DRAW = (function () {
     }
     ctx.globalAlpha = 1;
 
-    // district name, ghosted into the ground — shrunk to fit the island
+    // district name, ghosted into the ground, shrunk to fit the island
     ctx.textAlign = 'center';
     ctx.fillStyle = hexA(s.glow, 0.09);
     const name = s.name.toUpperCase();
@@ -486,7 +486,7 @@ window.DRAW = (function () {
     ctx.beginPath(); ctx.arc(x + 30, y - 62, 11, 0.4, 5.2); ctx.stroke();
   };
 
-  // small honour-roll plaque on a post — the high-school footnote
+  // small honour-roll plaque on a post: the high-school footnote
   PROP.plaque = function (ctx, x, y, p, t) {
     ctx.fillStyle = '#2f2750';
     ctx.fillRect(x - 4, y - 34, 8, 34);
@@ -646,7 +646,7 @@ window.DRAW = (function () {
 
   /* ---------- the three totems in Origin -------------------------------- */
 
-  // squat rack + loaded barbell — seven years in the gym
+  // squat rack + loaded barbell: seven years in the gym
   PROP.rack = function (ctx, x, y, p, t) {
     const H = 96;
     ctx.fillStyle = '#2b2f3f';
@@ -685,7 +685,7 @@ window.DRAW = (function () {
     ctx.fillRect(x - 110, y - 160, 220, 190);
   };
 
-  // PA stack pushing sound rings — chestpump, 2M plays
+  // PA stack pushing sound rings: chestpump, 2M plays
   PROP.speaker = function (ctx, x, y, p, t) {
     const H = 118;
     // cabinet, slightly trapezoid
@@ -730,7 +730,7 @@ window.DRAW = (function () {
     ctx.fillRect(x - 120, y - 180, 240, 210);
   };
 
-  // board planted in a drift of snow — every winter since
+  // board planted in a drift of snow: every winter since
   PROP.snowboard = function (ctx, x, y, p, t) {
     // snow mound
     ctx.fillStyle = '#dfe9ff';
@@ -1009,7 +1009,7 @@ window.DRAW = (function () {
     ctx.fillRect(x - 13.4, top - 62, 3.4, 7);
     ctx.fillRect(x + 10, top - 62, 3.4, 7);
 
-    // Face — eyes track the facing direction. Screen y grows downward, so
+    // Face: eyes track the facing direction. Screen y grows downward, so
     // face.y < 0 is walking UP, i.e. away from the camera: that's the back of
     // the head. Walking DOWN faces the viewer and must keep the face.
     const fx = p.face.x * 3.4, fy = p.face.y * 2.2;

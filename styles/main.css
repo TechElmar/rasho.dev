@@ -1,5 +1,5 @@
 /* ==========================================================================
-   main.css — UI chrome for the world.
+   main.css: UI chrome for the world.
    The world itself is drawn on <canvas>; everything here is the frame
    around it: title screen, HUD, panels, map, résumé view.
    ========================================================================== */
@@ -29,7 +29,7 @@
 * { box-sizing: border-box; }
 
 /* The `hidden` attribute hides things via a user-agent rule, which ANY author
-   rule setting `display` silently beats — and most overlays below set
+   rule setting `display` silently beats, and most overlays below set
    `display: flex` / `display: grid`. Without this, `el.hidden = true` sets the
    attribute and hides nothing. Keep this rule. */
 [hidden] { display: none !important; }
@@ -233,7 +233,7 @@ kbd {
 }
 
 /* The button group must never be clipped: it holds the only route to the
-   résumé. So the zone chip is the thing that gives way — it shrinks and
+   résumé. So the zone chip is the thing that gives way: it shrinks and
    ellipses, while the buttons keep their full width. */
 .hud-top {
   display: flex; justify-content: space-between; align-items: flex-start;

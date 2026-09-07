@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ui.js — everything that is DOM rather than canvas: content panels, the
+   ui.js: everything that is DOM rather than canvas: content panels, the
    world map, the résumé view, toasts.
 
    Content from src/content.js is treated as trusted HTML (it is your own
@@ -49,7 +49,7 @@ window.UI = (function () {
   function label(text) { return '<p class="section-label">' + text + '</p>'; }
 
   /* ======================================================================
-     media — photo / clip / audio snippet inside a panel
+     media: photo / clip / audio snippet inside a panel
 
      Files live in assets/. If one is missing the block removes itself, so
      the site never shows a broken image in production. When running
@@ -104,7 +104,7 @@ window.UI = (function () {
         (m.href ? '<a class="player-link" href="' + m.href + '" target="_blank" rel="noopener" title="Listen in full">↗</a>' : '') +
         // preload="metadata", not "none": it costs a few KB, but it means a
         // missing file errors up front instead of silently doing nothing when
-        // play is pressed — and the duration is known before first play, so
+        // play is pressed, and the duration is known before first play, so
         // the progress bar is accurate from the start.
         '<audio class="player-audio" data-essential src="' + m.src + '" preload="metadata"></audio>' +
         '</div>';
@@ -197,10 +197,10 @@ window.UI = (function () {
           '<div class="stat-line"><b>Close a window</b><span>Esc</span></div>' +
           label('where to go') +
           '<ul class="bullets">' +
-          '<li><b>West — Origin.</b> The life story, the parts that are not on a résumé.</li>' +
-          '<li><b>North — The Academy.</b> Education.</li>' +
-          '<li><b>East — The Workshop.</b> Projects. Boot a terminal to read one.</li>' +
-          '<li><b>South — The Ledger.</b> Work experience.</li>' +
+          '<li><b>West: Origin.</b> The life story, the parts that are not on a résumé.</li>' +
+          '<li><b>North: The Academy.</b> Education.</li>' +
+          '<li><b>East: The Workshop.</b> Projects. Boot a terminal to read one.</li>' +
+          '<li><b>South: The Ledger.</b> Work experience.</li>' +
           '</ul>' +
           '<p class="quote">There are ' + W.BIT_TOTAL + ' green fragments scattered across the islands. Find them all and something opens up.</p>' +
           '<p class="p-body" style="margin-top:1.2rem">In a hurry? Press <kbd>R</kbd> for the whole thing as a plain, printable document.</p>',
@@ -239,7 +239,7 @@ window.UI = (function () {
       return {
         eyebrow: 'contact', title: 'Signal received',
         html:
-          '<p class="p-lede">The beacon is on. If you have something interesting — a role, a project, a bug in this website — say hello.</p>' +
+          '<p class="p-lede">The beacon is on. If you have something interesting, a role, a project, a bug in this website, say hello.</p>' +
           metaRow([p.availability, p.location]) +
           '<div class="link-row">' +
           '<a class="link-chip" href="mailto:' + p.email + '">Email <small>' + p.email + '</small></a>' +
@@ -311,7 +311,7 @@ window.UI = (function () {
           return '<div style="margin-bottom:2rem">' +
             '<p class="section-label" style="margin-top:0">' + e.period + '</p>' +
             '<p class="p-lede" style="margin-bottom:.4rem">' + e.school + '</p>' +
-            '<div class="p-body"><p>' + e.degree + (e.note ? ' &mdash; ' + e.note : '') + '</p></div>' +
+            '<div class="p-body"><p>' + e.degree + (e.note ? '. ' + e.note : '') + '</p></div>' +
             bullets(e.highlights) + '</div>';
         }).join(''),
       };
@@ -353,7 +353,7 @@ window.UI = (function () {
         html:
           '<p class="p-lede">It&rsquo;s yours. Hold <kbd>Shift</kbd> and the board comes out.</p>' +
           '<div class="p-body">' +
-          '<p>About three and a half times the speed, and it carries momentum the way a board should &mdash; you&rsquo;ll drift a good way past where you stop steering. Let go of Shift and you stop hard, so it doubles as the brake. Crossing the whole map takes about five seconds now.</p>' +
+          '<p>About three and a half times the speed, and it carries momentum the way a board should. You&rsquo;ll drift a good way past where you stop steering. Let go of Shift and you stop hard, so it doubles as the brake. Crossing the whole map takes about five seconds now.</p>' +
           '<p>It seemed like the right thing to hide behind all ten fragments. Snowboarding started as one trip for a friend&rsquo;s birthday and turned into the reason I look forward to winter; if you went to the trouble of finding every fragment, you get the thing I actually care about.</p>' +
           '</div>' +
           label('controls') +
@@ -366,10 +366,10 @@ window.UI = (function () {
       return {
         eyebrow: 'secret', title: 'You actually found them all',
         html:
-          '<p class="p-lede">Ten fragments, one hidden island. Most visitors read two paragraphs and leave — you went looking. That says something.</p>' +
+          '<p class="p-lede">Ten fragments, one hidden island. Most visitors read two paragraphs and leave, but you went looking. That says something.</p>' +
           '<div class="p-body">' +
           '<p>Since you are clearly thorough: this whole site is about 2,000 lines of vanilla JavaScript with no framework, no build step and no image files. Every tree, terminal and campfire you walked past is drawn with canvas primitives at runtime.</p>' +
-          '<p>If you want to talk about how it works &mdash; or about a role &mdash; the beacon back on The Crossroads has my email.</p>' +
+          '<p>If you want to talk about how it works, or about a role, the beacon back on The Crossroads has my email.</p>' +
           '</div>' +
           '<div class="link-row"><a class="link-chip" href="mailto:' + C.profile.email + '">Email me <small>' + C.profile.email + '</small></a></div>',
       };

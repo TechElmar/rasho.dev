@@ -1,9 +1,9 @@
 /* ==========================================================================
-   world.js — builds the world from src/content.js.
+   world.js: builds the world from src/content.js.
 
    The map is a set of floating islands connected by light bridges. Each
    island is a district; each piece of your content becomes a prop you can
-   walk up to and interact with. Add content, get world — no map editing.
+   walk up to and interact with. Add content, get world, no map editing.
    ========================================================================== */
 
 window.WORLD = (function () {
@@ -31,7 +31,7 @@ window.WORLD = (function () {
     visited: {},
     seen: {},
     bitsFound: 0,
-    hasBoard: false,   // the snowboard from the vault — hold Shift to ride
+    hasBoard: false,   // the snowboard from the vault, hold Shift to ride
   };
 
   const EDGE = 16; // keep the player off the very lip of an island
@@ -71,7 +71,7 @@ window.WORLD = (function () {
     },
   ];
 
-  /* Each span deliberately overlaps the islands it joins — the islands have
+  /* Each span deliberately overlaps the islands it joins. The islands have
      rounded corners, so a bridge that merely touches the bounding box can
      still leave a gap you cannot walk across. */
   const bridges = [
@@ -179,7 +179,7 @@ window.WORLD = (function () {
     view: 'facts',
   });
 
-  // the three totems — gym, music, snowboard
+  // the three totems: gym, music, snowboard
   const TOTEM = {
     rack:      { w: 104, h: 104 },
     speaker:   { w: 78,  h: 126 },
@@ -300,7 +300,7 @@ window.WORLD = (function () {
       const x = island.x + 70 + rand() * (island.w - 140);
       const y = island.y + 70 + rand() * (island.h - 110);
       // rounded corners mean a point inside the bounding box can still be
-      // over the void — only keep decor that is actually standing on ground
+      // over the void, so only keep decor that is actually standing on ground
       if (!inRoundRect(x, y, island.x + EDGE, island.y + EDGE,
                        island.w - EDGE * 2, island.h - EDGE * 2,
                        Math.max(4, island.r - EDGE))) continue;
@@ -348,7 +348,7 @@ window.WORLD = (function () {
       if (inRoundRect(x, y, s.x + EDGE, s.y + EDGE, s.w - EDGE * 2, s.h - EDGE * 2, Math.max(4, s.r - EDGE))) return s;
     }
     // Inset the *sides* of a bridge (so you can fall off the rail) but never
-    // its ends — the ends are where it meets the island.
+    // its ends. The ends are where it meets the island.
     for (let i = 0; i < bridges.length; i++) {
       const b = bridges[i];
       if (b.secret && !state.vaultOpen) continue;
