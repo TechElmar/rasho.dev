@@ -28,7 +28,7 @@ window.CONTENT = (function () {
 
     intro: [
       'Computer Science graduate from Western University. I build backend services, full-stack web apps, mobile apps and AI-integrated pipelines, and I ship them independently rather than leaving them at the prototype stage.',
-      'PokeDropz is the one I point at first: a real-time inventory monitoring platform on AWS that has run continuously for over twelve months, serving 7,000+ users in <a href="https://discord.com/invite/3dGaCuKn6E" target="_blank" rel="noopener">Pokémon TCG Canada</a>. Morph is live on the App Store. GPT Mini is published on the Chrome Web Store.',
+      'PokeDropz is the one I point at first: a real-time inventory monitoring platform on AWS that has run continuously for over twelve months, serving 9,000+ users in <a href="https://discord.com/invite/3dGaCuKn6E" target="_blank" rel="noopener">Pokémon TCG Canada</a>. Morph is live on the App Store. GPT Mini is published on the Chrome Web Store.',
       'Most of what I know came from operating what I built, not only writing it: triaging live failures, tracking down the caching bug behind a wave of false alerts, and keeping a system running when I am the only person who can fix it.',
     ],
 
@@ -47,7 +47,7 @@ window.CONTENT = (function () {
       location: 'Production on AWS',
       summary: 'A real-time inventory monitoring and alert platform I designed, built and operate end to end.',
       bullets: [
-        'Serves 7,000+ users in Pokémon TCG Canada with 12+ months of continuous production operation and zero manual intervention.',
+        'Serves 9,000+ users in Pokémon TCG Canada with 12+ months of continuous production operation and zero manual intervention.',
         'Python backend on AWS EC2 polling hundreds of SKUs through a rotating proxy pool, with per-request retry logic and exponential backoff.',
         'S3-backed persistent state so a restart never loses its place; Discord bot layer handles command parsing and role-based notification routing.',
         'Triaged live failures, refactored the caching layer to eliminate false-positive alerts, and maintained the documentation for a system I am solely on call for.',
@@ -88,7 +88,7 @@ window.CONTENT = (function () {
       name: 'PokeDropz',
       year: '2025',
       status: '12+ months in production',
-      tagline: 'Real-time inventory monitoring and alerting for a 10,000-member community.',
+      tagline: 'Real-time inventory monitoring and alerting for 9,000+ users.',
       description:
         'Python backend on AWS EC2 monitoring hundreds of e-commerce SKUs in real time through a rotating proxy pool. Parses availability changes and pushes instant alerts over Discord webhooks, with S3 holding persistent state across restarts. Runs free for the community.',
       highlights: [
