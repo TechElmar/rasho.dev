@@ -85,7 +85,9 @@ src/
   main.js         renders the page from content.js
 assets/
   Elmar_Rasho_Resume.pdf
-  social-card.jpg   1200x630, used by og:image
+  social-card-v2.jpg  1200x630, used by og:image. bump the -vN suffix
+                      whenever the card art changes, so LinkedIn, Discord
+                      and the rest cannot serve a cached copy of the old one
 robots.txt, sitemap.xml, vercel.json, netlify.toml
 ```
 
