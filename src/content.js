@@ -28,7 +28,7 @@ window.CONTENT = (function () {
 
     intro: [
       'Computer Science graduate from Western University. I build backend services, full-stack web apps, mobile apps and AI-integrated pipelines, and I ship them independently rather than leaving them at the prototype stage.',
-      'PokeDropz is the one I point at first: a real-time inventory monitoring platform on AWS that has run continuously for over twelve months, serving 9,000+ users in <a href="https://discord.com/invite/3dGaCuKn6E" target="_blank" rel="noopener">Pokémon TCG Canada</a>. Morph is live on the App Store. GPT Mini is published on the Chrome Web Store.',
+      'PokeDropz is the one I point at first: a real-time inventory monitoring platform on AWS that has run continuously for over eight months, serving 9,000+ users in <a href="https://discord.com/invite/3dGaCuKn6E" target="_blank" rel="noopener">Pokémon TCG Canada</a>. Morph is live on the App Store. GPT Mini is published on the Chrome Web Store.',
       'Most of what I know came from operating what I built, not only writing it: triaging live failures, tracking down the caching bug behind a wave of false alerts, and keeping a system running when I am the only person who can fix it.',
     ],
 
@@ -39,35 +39,11 @@ window.CONTENT = (function () {
     ],
   };
 
+  /* PokeDropz and Morph deliberately are NOT repeated here. They are
+     independent builds, they lead the Projects section directly above,
+     and listing the same two things twice made the page read as padded
+     rather than fuller. Experience is employment. */
   const experience = [
-    {
-      company: 'PokeDropz',
-      role: 'Backend Developer, Independent',
-      period: '2025 to present',
-      location: 'Production on AWS',
-      summary: 'A real-time inventory monitoring and alert platform I designed, built and operate end to end.',
-      bullets: [
-        'Serves 9,000+ users in Pokémon TCG Canada with 12+ months of continuous production operation and zero manual intervention.',
-        'Python backend on AWS EC2 polling hundreds of SKUs through a rotating proxy pool, with per-request retry logic and exponential backoff.',
-        'S3-backed persistent state so a restart never loses its place; Discord bot layer handles command parsing and role-based notification routing.',
-        'Triaged live failures, refactored the caching layer to eliminate false-positive alerts, and maintained the documentation for a system I am solely on call for.',
-      ],
-      stack: ['Python', 'AWS EC2', 'AWS S3', 'Linux', 'Discord API', 'Async pipelines'],
-    },
-    {
-      company: 'Morph',
-      role: 'iOS Developer, Independent',
-      period: '2026',
-      location: 'Live on the App Store',
-      summary: 'A native iOS app taken from empty Xcode project to a published App Store release.',
-      bullets: [
-        'Owned the full release process: build, TestFlight distribution, App Review submission and launch.',
-        'Designed a multi-step OpenAI pipeline with JSON schemas enforced at every stage, so model output could be decoded straight into Swift structs.',
-        'Structured the app MVVM so the AI pipeline and the interface could be tested and replaced independently.',
-        'Learned Swift, SwiftUI and the Apple release process from zero to shipped.',
-      ],
-      stack: ['Swift', 'SwiftUI', 'XCTest', 'OpenAI API', 'MVVM'],
-    },
     {
       company: "Popeye's Supplements Canada",
       role: 'Salesperson, Permanent Part-time',
@@ -87,14 +63,14 @@ window.CONTENT = (function () {
     {
       name: 'PokeDropz',
       year: '2025',
-      status: '12+ months in production',
+      status: '8+ months in production',
       tagline: 'Real-time inventory monitoring and alerting for 9,000+ users.',
       description:
         'Python backend on AWS EC2 monitoring hundreds of e-commerce SKUs in real time through a rotating proxy pool. Parses availability changes and pushes instant alerts over Discord webhooks, with S3 holding persistent state across restarts. Runs free for the community.',
       highlights: [
         'Async pipeline with per-request retry logic and exponential backoff',
         'Role-based notification routing so members only get the SKUs they asked for',
-        '12+ months live on Linux with zero manual intervention',
+        '8+ months live on Linux with zero manual intervention',
       ],
       stack: ['Python', 'AWS EC2', 'AWS S3', 'REST APIs', 'Event-driven', 'Discord API'],
       links: {

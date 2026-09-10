@@ -2,6 +2,12 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/api/stats",
+      "destination": "http://146.190.79.87:8080/stats.json"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

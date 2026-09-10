@@ -119,7 +119,19 @@
       '</div>';
 
     pbody.appendChild(card);
-    window.DEMOS.mount(card, p.name, p);
+
+    /* PokeDropz shows the real thing instead of the simulated console.
+       demos.js always said the replay was a stand-in until a read-only
+       status endpoint existed; it exists now, so the card carries live
+       figures from the running system and the simulation is retired.
+       Every other project keeps its demo pane. */
+    if (p.name === 'PokeDropz' && window.MONITOR) {
+      const mon = document.createElement('div');
+      card.querySelector('.card-body').appendChild(mon);
+      window.MONITOR.mount(mon);
+    } else {
+      window.DEMOS.mount(card, p.name, p);
+    }
   });
 
   /* ---------- education --------------------------------------------------- */
@@ -150,8 +162,8 @@
 
   /* ---------- sidebar nav, built from the sections that exist ------------- */
   const SECTIONS = [
-    ['experience', 'experience'],
     ['projects', 'projects'],
+    ['experience', 'experience'],
     ['education', 'education'],
     ['skills', 'skills'],
     ['contact', 'contact'],
